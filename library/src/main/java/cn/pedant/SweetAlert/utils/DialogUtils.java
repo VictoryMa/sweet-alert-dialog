@@ -98,14 +98,14 @@ public class DialogUtils {
                 .setConfirmText(ObjectUtils.isNotEmpty(this.okText) ? this.okText : "确定")
                 .showCancelButton(this.enableCancelButton)
                 .setCancelClickListener(sDialog -> {
-                    if (ObjectUtils.isNotEmpty(this.okListener))
-                        this.okListener.click(sDialog);
-                    sDialog.dismiss();
-                })
-                .setConfirmClickListener(sDialog -> {
                     if (ObjectUtils.isNotEmpty(this.cancelListener)) {
                         this.cancelListener.click(sDialog);
                     }
+                    sDialog.dismiss();
+                })
+                .setConfirmClickListener(sDialog -> {
+                    if (ObjectUtils.isNotEmpty(this.okListener))
+                        this.okListener.click(sDialog);
                     sDialog.dismiss();
                 })
                 .show();
