@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import cn.pedant.SweetAlert.utils.DialogUtils;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
 
@@ -58,56 +59,35 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
             case R.id.warning_cancel_test:
-                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
-                        .setContentText("Won't be able to recover this file!")
-                        .setCancelText("No,cancel plx!")
-                        .setConfirmText("Yes,delete it!")
-                        .showCancelButton(true)
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                DialogUtils.with(this)
+                        .setTitle("测试标题")
+                        .setContent("测试内容")
+                        .setCancelText("测试取消")
+                        .setOkText("测试确认")
+                        .setEnableCancelButton(false)
+                        .setOkListener(new DialogUtils.OnClickListener() {
                             @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                // reuse previous dialog instance, keep widget user state, reset them if you need
-                                sDialog.setTitleText("Cancelled!")
-                                        .setContentText("Your imaginary file is safe :)")
-                                        .setConfirmText("OK")
-                                        .showCancelButton(false)
-                                        .setCancelClickListener(null)
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            public void click(SweetAlertDialog dialog) {
 
-                                // or you can new a SweetAlertDialog to show
-                               /* sDialog.dismiss();
-                                new SweetAlertDialog(SampleActivity.this, SweetAlertDialog.ERROR_TYPE)
-                                        .setTitleText("Cancelled!")
-                                        .setContentText("Your imaginary file is safe :)")
-                                        .setConfirmText("OK")
-                                        .show();*/
                             }
                         })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        .setCancelListener(new DialogUtils.OnClickListener() {
                             @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.setTitleText("Deleted!")
-                                        .setContentText("Your imaginary file has been deleted!")
-                                        .setConfirmText("OK")
-                                        .showCancelButton(false)
-                                        .setCancelClickListener(null)
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            public void click(SweetAlertDialog dialog) {
+
                             }
                         })
                         .show();
@@ -128,7 +108,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;

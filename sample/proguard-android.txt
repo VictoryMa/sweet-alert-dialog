@@ -1,3 +1,4 @@
  -keep class cn.pedant.SweetAlert.Rotate3dAnimation {
     public <init>(...);
  }
+ -dontwarn java.lang.invoke.**
