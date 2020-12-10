@@ -142,7 +142,7 @@
         android:textColor="#333333"
         android:textSize="15dp"
         android:layout_marginBottom="36dp"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -159,9 +159,10 @@
             android:id="@+id/cancel_button"
             style="@style/dialog_blue_button"
             android:textColor="#FA5151"
-            android:visibility="visible"
+            android:visibility="gone"
             android:text="@string/dialog_cancel" />
         <View
+            android:visibility="gone"
             android:id="@+id/v_cancel"
             android:background="#DFDFDF"
             android:layout_width="1dp"
