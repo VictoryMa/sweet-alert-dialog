@@ -62,6 +62,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int WARNING_TYPE = 3;
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
+    private View mVCancel;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -152,7 +153,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mCustomImage = (ImageView)findViewById(R.id.custom_image);
         mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
         mConfirmButton = (Button)findViewById(R.id.confirm_button);
-        mCancelButton = (Button)findViewById(R.id.cancel_button);
+        mCancelButton = findViewById(R.id.cancel_button);
+        mVCancel = findViewById(R.id.v_cancel);
         mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
@@ -282,6 +284,9 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mShowCancel = isShow;
         if (mCancelButton != null) {
             mCancelButton.setVisibility(mShowCancel ? View.VISIBLE : View.GONE);
+        }
+        if (mVCancel != null) {
+            mVCancel.setVisibility(mShowCancel ? View.VISIBLE : View.GONE);
         }
         return this;
     }

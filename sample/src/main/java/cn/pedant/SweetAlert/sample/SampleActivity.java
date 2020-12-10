@@ -6,7 +6,6 @@ import android.os.CountDownTimer;
 import android.view.View;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import cn.pedant.SweetAlert.utils.DialogUtils;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
 
@@ -72,25 +71,25 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .show();
                 break;
             case R.id.warning_cancel_test:
-                DialogUtils.with(this)
-                        .setTitle("测试标题")
-                        .setContent("测试内容")
-                        .setCancelText("测试取消")
-                        .setOkText("测试确认")
-                        .setEnableCancelButton(false)
-                        .setOkListener(new DialogUtils.OnClickListener() {
-                            @Override
-                            public void click(SweetAlertDialog dialog) {
-
-                            }
-                        })
-                        .setCancelListener(new DialogUtils.OnClickListener() {
-                            @Override
-                            public void click(SweetAlertDialog dialog) {
-
-                            }
-                        })
-                        .show();
+//                DialogUtils.with(this)
+//                        .setTitle("测试标题")
+//                        .setContent("测试内容")
+//                        .setCancelText("测试取消")
+//                        .setOkText("测试确认")
+//                        .setEnableCancelButton(false)
+//                        .setOkListener(new DialogUtils.OnClickListener() {
+//                            @Override
+//                            public void click(SweetAlertDialog dialog) {
+//
+//                            }
+//                        })
+//                        .setCancelListener(new DialogUtils.OnClickListener() {
+//                            @Override
+//                            public void click(SweetAlertDialog dialog) {
+//
+//                            }
+//                        })
+//                        .show();
                 break;
             case R.id.custom_img_test:
                 new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
