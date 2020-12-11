@@ -17,8 +17,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pnikosis.materialishprogress.ProgressWheel;
-
 import java.util.List;
 
 public class SweetAlertDialog extends Dialog implements View.OnClickListener {
@@ -63,6 +61,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;
     private View mVCancel;
+    private View mVBtnTop;
 
     public static interface OnSweetClickListener {
         public void onClick (SweetAlertDialog sweetAlertDialog);
@@ -107,14 +106,11 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
             @Override
             public void onAnimationEnd(Animation animation) {
                 mDialogView.setVisibility(View.GONE);
-                mDialogView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mCloseFromCancel) {
-                            SweetAlertDialog.super.cancel();
-                        } else {
-                            SweetAlertDialog.super.dismiss();
-                        }
+                mDialogView.post(() -> {
+                    if (mCloseFromCancel) {
+                        SweetAlertDialog.super.cancel();
+                    } else {
+                        SweetAlertDialog.super.dismiss();
                     }
                 });
             }
@@ -141,21 +137,22 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.alert_dialog);
 
         mDialogView = getWindow().getDecorView().findViewById(android.R.id.content);
-        mTitleTextView = (TextView)findViewById(R.id.title_text);
-        mContentTextView = (TextView)findViewById(R.id.content_text);
-        mErrorFrame = (FrameLayout)findViewById(R.id.error_frame);
-        mErrorX = (ImageView)mErrorFrame.findViewById(R.id.error_x);
-        mSuccessFrame = (FrameLayout)findViewById(R.id.success_frame);
-        mProgressFrame = (FrameLayout)findViewById(R.id.progress_dialog);
-        mSuccessTick = (SuccessTickView)mSuccessFrame.findViewById(R.id.success_tick);
+        mTitleTextView = findViewById(R.id.title_text);
+        mContentTextView = findViewById(R.id.content_text);
+        mErrorFrame = findViewById(R.id.error_frame);
+        mErrorX = mErrorFrame.findViewById(R.id.error_x);
+        mSuccessFrame = findViewById(R.id.success_frame);
+        mProgressFrame = findViewById(R.id.progress_dialog);
+        mSuccessTick = mSuccessFrame.findViewById(R.id.success_tick);
         mSuccessLeftMask = mSuccessFrame.findViewById(R.id.mask_left);
         mSuccessRightMask = mSuccessFrame.findViewById(R.id.mask_right);
-        mCustomImage = (ImageView)findViewById(R.id.custom_image);
-        mWarningFrame = (FrameLayout)findViewById(R.id.warning_frame);
-        mConfirmButton = (Button)findViewById(R.id.confirm_button);
+        mCustomImage = findViewById(R.id.custom_image);
+        mWarningFrame = findViewById(R.id.warning_frame);
+        mConfirmButton = findViewById(R.id.confirm_button);
         mCancelButton = findViewById(R.id.cancel_button);
+        mVBtnTop = findViewById(R.id.v_btn_top);
         mVCancel = findViewById(R.id.v_cancel);
-        mProgressHelper.setProgressWheel((ProgressWheel)findViewById(R.id.progressWheel));
+        mProgressHelper.setProgressWheel(findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
 
@@ -174,6 +171,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         mWarningFrame.setVisibility(View.GONE);
         mProgressFrame.setVisibility(View.GONE);
         mConfirmButton.setVisibility(View.VISIBLE);
+        mVBtnTop.setVisibility(View.VISIBLE);
 
         mConfirmButton.setBackgroundResource(R.drawable.blue_button_background);
         mErrorFrame.clearAnimation();
@@ -221,6 +219,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
                 case PROGRESS_TYPE:
                     mProgressFrame.setVisibility(View.VISIBLE);
                     mConfirmButton.setVisibility(View.GONE);
+                    mVBtnTop.setVisibility(View.GONE);
                     break;
             }
             if (!fromCreate) {
