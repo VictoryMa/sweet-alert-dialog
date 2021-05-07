@@ -1,9 +1,5 @@
 buildscript {
     repositories {
-        jcenter()
-        maven { url "https://dl.bintray.com/whosmyqueen/maven" }
-        maven { url "https://dl.bintray.com/innovationai/maven" }
-
         maven { url 'https://maven.aliyun.com/repository/public/' }
 
         maven { url 'https://maven.aliyun.com/repository/google/' }
@@ -14,8 +10,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:4.0.2'
         //Gradle Android Maven plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        //Gradle Bintray Plugin
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
 
@@ -25,10 +19,6 @@ ext {
 
 allprojects {
     repositories {
-        jcenter()
-        maven { url "https://dl.bintray.com/whosmyqueen/maven" }
-        maven { url "https://dl.bintray.com/innovationai/maven" }
-
         maven { url 'https://maven.aliyun.com/repository/public/' }
 
         maven { url 'https://maven.aliyun.com/repository/google/' }
