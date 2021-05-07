@@ -3,7 +3,7 @@ Sweet Alert Dialog
 SweetAlert for Android, a beautiful and clever alert dialog
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
-
+[![](https://jitpack.io/v/whosmyqueen/sweet-alert-dialog.svg)](https://jitpack.io/#whosmyqueen/sweet-alert-dialog)
 [中文版](https://github.com/pedant/sweet-alert-dialog/blob/master/README.zh.md)
 
 Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
