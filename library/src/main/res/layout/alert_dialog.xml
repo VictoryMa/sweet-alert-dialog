@@ -172,5 +172,19 @@
             style="@style/dialog_blue_button"
             android:textColor="#009B63"
             android:text="@string/dialog_ok" />
+        <View
+            android:visibility="gone"
+            android:id="@+id/v_true"
+            android:background="#DFDFDF"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/extend_button"
+            android:visibility="gone"
+            style="@style/dialog_blue_button"
+            android:textColor="#ff9900"
+            android:text="@string/dialog_extend" />
+
     </LinearLayout>
 </LinearLayout>

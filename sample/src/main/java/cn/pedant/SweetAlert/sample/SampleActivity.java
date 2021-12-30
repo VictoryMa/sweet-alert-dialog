@@ -23,6 +23,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+        findViewById(R.id.progress_dialog).setOnClickListener(this);
     }
 
     @Override
@@ -52,24 +53,24 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("You clicked the button!")
                         .show();
                 break;
-            case R.id.warning_confirm_test:
-                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
-                        .setContentText("Won't be able to recover this file!")
-                        .setConfirmText("Yes,delete it!")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                // reuse previous dialog instance
-                                sDialog.setTitleText("Deleted!")
-                                        .setContentText("Your imaginary file has been deleted!")
-                                        .setConfirmText("OK")
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            }
-                        })
-                        .show();
-                break;
+//            case R.id.warning_confirm_test:
+//                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+//                        .setTitleText("Are you sure?")
+//                        .setContentText("Won't be able to recover this file!")
+//                        .setConfirmText("Yes,delete it!")
+//                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                            @Override
+//                            public void onClick(SweetAlertDialog sDialog) {
+//                                // reuse previous dialog instance
+//                                sDialog.setTitleText("Deleted!")
+//                                        .setContentText("Your imaginary file has been deleted!")
+//                                        .setConfirmText("OK")
+//                                        .setConfirmClickListener(null)
+//                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+//                            }
+//                        })
+//                        .show();
+//                break;
             case R.id.warning_cancel_test:
 //                DialogUtils.with(this)
 //                        .setTitle("测试标题")
@@ -96,6 +97,25 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setTitleText("Sweet!")
                         .setContentText("Here's a custom image.")
                         .setCustomImage(R.drawable.custom_img)
+                        .show();
+                break;
+            case R.id.warning_confirm_test:
+                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Won't be able to recover this file!")
+                        .setConfirmText("Yes,delete it!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setCancelExtendText("取消","后备母猪")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
                         .show();
                 break;
             case R.id.progress_dialog:
